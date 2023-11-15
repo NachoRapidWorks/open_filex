@@ -132,6 +132,11 @@ static NSString *const CHANNEL_NAME = @"open_file";
 
             result(json);
         }
+    } else if ([@"close_preview" isEqualToString:call.method]) {
+        @try {
+            [_documentController dismissPreviewAnimated:YES];
+        }@catch (NSException *exception) {
+        }
     } else {
         result(FlutterMethodNotImplemented);
     }

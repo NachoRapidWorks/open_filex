@@ -59,4 +59,10 @@ class OpenFilex {
     final resultMap = json.decode(result) as Map<String, dynamic>;
     return OpenResult.fromJson(resultMap);
   }
+
+  static Future closePreview() async {
+    if (Platform.isIOS) {
+      return await _channel.invokeMethod('close_preview');
+    }
+  }
 }
